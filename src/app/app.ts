@@ -1,11 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { Employees } from './employees/employees';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [Employees],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('employee-dashboard');
 }

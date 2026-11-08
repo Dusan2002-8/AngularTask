@@ -1,0 +1,43 @@
+<div class="container">
+
+  <h1>Employee Dashboard</h1>
+
+  <div *ngIf="loading" class="message">
+    Loading employees...
+  </div>
+
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!loading && !errorMessage">
+
+    <h2>Employees</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Total Time in Month</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr
+          *ngFor="let employee of employees"
+          [class.low-hours]="employee.totalHours < 100"
+        >
+          <td>{{ employee.name }}</td>
+          <td>{{ formatHours(employee.totalHours) }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="chart-container">
+      <h2>Working Hours Percentage</h2>
+      <canvas #employeeChart></canvas>
+    </div>
+
+  </div>
+
+</div>
